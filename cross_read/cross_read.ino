@@ -1,5 +1,6 @@
 #include <stdio.h>
-int steps = 0;
+int steps[4];
+int sets = 0;
 void setup() {
     // put your setup code here, to run once:
     pinMode(D1, INPUT);
@@ -21,8 +22,16 @@ void loop() {
     int num4 = digitalRead(D6);
 
     if (num1 || num2 || num3 || num4) {
-        Serial.println(steps);
-        steps++;
+//        Serial.println(steps);
+//        steps++;
+        sets++;
+        int curpos;
+        if(num1){curpos=1;}
+        if(num2){curpos=2;}
+        if(num3){curpos=3;}
+        if(num4){curpos=4;}
+        
+        steps[sets] = curpos;
         while ((num1 || num2 || num3 || num4)) {
             //      Serial.println("haha");
             num1 = digitalRead(D1);
@@ -32,6 +41,14 @@ void loop() {
             delay(10);
         }
     }
+
+    if(sets == 4){
+      sets = 0;
+      for(int i=0;i<4;i++){
+        Serial.print(steps[i]);
+      }
+      Serial.println();
+      }
 //    Serial.println("not");
 
     //  String ans = num1+num2+num3+num4;
