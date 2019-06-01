@@ -1,4 +1,3 @@
-#include <stdio.h>
 int steps[] = {0, 0, 0, 0};
 int sets = 0;
 void setup() {
@@ -45,16 +44,5 @@ void loop() {
       }
       Serial.println();
       }
-//    Serial.println("not");
-
-    //  String ans = num1+num2+num3+num4;
-    //  Serial.print(digitalRead(D1));
-    //  Serial.print(" ");
-    //  Serial.print(digitalRead(D2));
-    //  Serial.print(" ");
-    //  Serial.print(digitalRead(D5));
-    //  Serial.print(" ");
-    //  Serial.println(digitalRead(D6));
-    //  Serial.println(ans);
     delay(100);
 }
