@@ -1,5 +1,5 @@
 #include <stdio.h>
-int steps[4];
+int steps[] = {0, 0, 0, 0};
 int sets = 0;
 void setup() {
     // put your setup code here, to run once:
@@ -23,21 +23,17 @@ void loop() {
 
     if (num1 || num2 || num3 || num4) {
 //        Serial.println(steps);
+
+        int curpos;
+        if(num1){curpos=0;}
+        if(num2){curpos=1;}
+        if(num3){curpos=2;}
+        if(num4){curpos=3;}
+        steps[sets] = curpos;
 //        steps++;
         sets++;
-        int curpos;
-        if(num1){curpos=1;}
-        if(num2){curpos=2;}
-        if(num3){curpos=3;}
-        if(num4){curpos=4;}
         
-        steps[sets] = curpos;
-        while ((num1 || num2 || num3 || num4)) {
-            //      Serial.println("haha");
-            num1 = digitalRead(D1);
-            num2 = digitalRead(D2);
-            num3 = digitalRead(D5);
-            num4 = digitalRead(D6);
+        while(digitalRead(D1) || digitalRead(D2) || digitalRead(D5) || digitalRead(D6)){
             delay(10);
         }
     }
