@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        .circle {
+            height: 50px;
+            width: 50px;
+            /* background-color: #555; */
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body class="container text-center"><br>
+    <h1>Random Game</h1>
+    <hr><br>
+    <button id="play-btn" class="btn btn-block btn-success btn-lg">Start!</button>
+    <br><br>
+
+    <div id="game-slot" class="row">
+        <div class="col-3 d-flex justify-content-center">
+            <div class="circle bg-secondary"></div>
+        </div>
+
+        <div class="col-3 d-flex justify-content-center">
+            <div class="circle bg-secondary"></div>
+        </div>
+
+        <div class="col-3 d-flex justify-content-center">
+            <div class="circle bg-secondary"></div>
+        </div>
+
+        <div class="col-3 d-flex justify-content-center">
+            <div class="circle bg-secondary"></div>
+        </div>
+
+    </div>
+</body>
+<script>
+    randToX = (x) => {
+        return Math.floor(Math.random() * x)
+    };
+    var bgset = ["bg-success", "bg-danger", "bg-warning", "bg-primary"];
+    $(document).ready(function () {
+        $("#game-slot").hide();
+
+        $("#play-btn").click(function () {
+            $(this).slideUp();
+            $("#game-slot").slideDown();
+
+            $(".circle").each(function (index) {
+                var curbg = bgset[(randToX(4 - index));
+                if (bgset.indexOf(curbg) > -1) {
+                    bgset.splice(bgset.indexOf(curbg), 1);
+                }
+                $(this).removeClass("bg-secondary").addClass(curbg);
+            });
+
+        });
+    });
+</script>
+
+</html>
