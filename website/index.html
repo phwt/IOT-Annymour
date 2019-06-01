@@ -56,13 +56,23 @@
             $(this).slideUp();
             $("#game-slot").slideDown();
 
-            $(".circle").each(function (index) {
-                var curbg = bgset[(randToX(4 - index))];
-                if (bgset.indexOf(curbg) > -1) {
-                    bgset.splice(bgset.indexOf(curbg), 1);
-                }
-                $(this).removeClass("bg-secondary").addClass(curbg);
-            });
+            var runRand = setInterval(() => {
+                $(".circle").each(function (index) {
+                    var curbg = bgset[(randToX(4))];
+                    $(this).removeClass().addClass("circle " + curbg);
+                });
+            }, 150);
+
+            setTimeout(() => {
+                clearInterval(runRand);
+                $(".circle").each(function (index) {
+                    var curbg = bgset[(randToX(4 - index))];
+                    if (bgset.indexOf(curbg) > -1) {
+                        bgset.splice(bgset.indexOf(curbg), 1);
+                    }
+                    $(this).removeClass().addClass("circle " + curbg);
+                });
+            }, 1000);
 
         });
     });
