@@ -42,8 +42,8 @@
 #define WIFI_SSID "Room334" //SSID ของ WiFi ห้อง 334
 #define WIFI_PASSWORD "334334334" //รหัสผ่าน WiFi ห้อง 334
 
-#define FIREBASE_HOST "aunnymour-1bbcc.firebaseio.com" //URL ของ Firebase จากใน Realtime Database
-#define FIREBASE_AUTH "Aay8NHL2n5Onk957fCjOnjqkbIZRtSvVbGmVifFV" //Database Secret Key (หาได้จาก - เฟือง > Project Settings > Service accounts > Database Secrets)
+#define FIREBASE_HOST "iot-annymour.firebaseio.com" //URL ของ Firebase จากใน Realtime Database
+#define FIREBASE_AUTH "dNYPqKA4fZTlAmxWBhaIdgXOQd8hkktQRO1Lo4Oq" //Database Secret Key (หาได้จาก - เฟือง > Project Settings > Service accounts > Database Secrets)
 
 /*
  * Pass as a parameter the trigger and echo pin, respectively,
@@ -82,10 +82,10 @@ void loop() {
     //Firebase.setInt("distance",distance);
 
     if(distance <= 25){
-      Firebase.setBool("on",true);
+      Firebase.setBool("sit",true);
        digitalWrite(D5,HIGH);
       }else{
-         Firebase.setBool("on",false);
+         Firebase.setBool("sit",false);
           digitalWrite(D5,LOW);
         }
 //    boolean light = Firebase.getBool("on");
